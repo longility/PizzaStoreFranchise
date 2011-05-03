@@ -43,15 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pizzas\CheesePizza.cs" />
-    <Compile Include="Pizzas\PepperoniPizza.cs" />
-    <Compile Include="Pizzas\GreekPizza.cs" />
+    <Compile Include="PizzaStores\ChicagoStylePizzaStore.cs" />
+    <Compile Include="PizzaStores\NyStylePizzaStore.cs" />
+    <Compile Include="Pizzas\ChicagoStyle\ChicagoStyleCheesePizza.cs" />
+    <Compile Include="Pizzas\ChicagoStyle\ChicagoStylePepperoniPizza.cs" />
+    <Compile Include="Pizzas\ChicagoStyle\ChicagoStyleGreekPizza.cs" />
+    <Compile Include="Pizzas\ChicagoStyle\ChicagoStylePizza.cs" />
+    <Compile Include="Pizzas\NyStyle\NyStyleCheesePizza.cs" />
+    <Compile Include="Pizzas\NyStyle\NyStyleGreekPizza.cs" />
+    <Compile Include="Pizzas\NyStyle\NyStylePepperoniPizza.cs" />
+    <Compile Include="Pizzas\NyStyle\NyStylePizza.cs" />
     <Compile Include="Pizzas\Pizza.cs" />
-    <Compile Include="PizzaStore.cs" />
-    <Compile Include="Pizzas\SimplePizzaFactory.cs" />
+    <Compile Include="PizzaStores\PizzaStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
