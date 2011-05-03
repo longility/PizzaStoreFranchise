@@ -4,16 +4,16 @@ namespace PizzaStoreFranchise
 {
     class PizzaStore
     {
+        private readonly SimplePizzaFactory pizzaFactory;
+
+        public PizzaStore(SimplePizzaFactory pizzaFactory)
+        {
+            this.pizzaFactory = pizzaFactory;
+        }
+
         public Pizza OrderPizza(PizzaType type)
         {
-            Pizza pizza;
-            switch(type)
-            {
-                case PizzaType.Cheese: pizza = new CheesePizza(); break;
-                case PizzaType.Greek: pizza = new GreekPizza(); break;
-                case PizzaType.Pepperoni: pizza = new PepperoniPizza(); break;
-                default: pizza = new CheesePizza(); break;
-            }
+            Pizza pizza = pizzaFactory.CreatePizza(type);
 
             pizza.Prepare();
             pizza.Bake();

@@ -2,13 +2,6 @@
 
 namespace PizzaStoreFranchise.Pizzas
 {
-    enum PizzaType
-    {
-        Cheese,
-        Greek,
-        Pepperoni
-    }
-
     abstract class Pizza
     {
         internal void Prepare()
