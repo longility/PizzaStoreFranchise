@@ -1,5 +1,5 @@
 ﻿using PizzaStoreFranchise.Pizzas;
-using PizzaStoreFranchise.Pizzas.ChicagoStyle;
+using PizzaStoreFranchise.Ingredients;
 
 namespace PizzaStoreFranchise.PizzaStores
 {
@@ -7,12 +7,14 @@ namespace PizzaStoreFranchise.PizzaStores
     {
         protected override Pizza CreatePizza(PizzaType pizzaType)
         {
+            IPizzaIngredientFactory pizzaIngredientFactory = new ChicagoPizzaIngredientFactory();
+            string style = "Chicago Style";
             switch(pizzaType)
             {
-                case PizzaType.Greek: return new ChicagoStyleGreekPizza();
-                case PizzaType.Pepperoni: return new ChicagoStylePepperoniPizza();
+                case PizzaType.Clam: return new ClamPizza(style, pizzaIngredientFactory);
+                case PizzaType.Veggie: return new VeggiePizza(style, pizzaIngredientFactory);
                 case PizzaType.Cheese:
-                default: return new ChicagoStyleCheesePizza();
+                default: return new CheesePizza(style, pizzaIngredientFactory);
             }
         }
     }

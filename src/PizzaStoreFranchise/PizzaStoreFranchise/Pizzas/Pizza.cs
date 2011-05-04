@@ -1,23 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using PizzaStoreFranchise.Ingredients;
+using PizzaStoreFranchise.Ingredients.Cheeses;
+using PizzaStoreFranchise.Ingredients.Doughs;
+using PizzaStoreFranchise.Ingredients.Sauces;
+using PizzaStoreFranchise.Ingredients.Toppings;
 
 namespace PizzaStoreFranchise.Pizzas
 {
     abstract class Pizza
     {
+        protected readonly IPizzaIngredientFactory pizzaIngredientFactory;
+        protected readonly string style;
+
+        private IDough dough;
+        private IEnumerable<ICheese> cheeses;
+        private ISauce sauce;
+        private IEnumerable<ITopping> toppings;
+
+        public Pizza(string style, IPizzaIngredientFactory pizzaIngredientFactory)
+        {
+            this.style = style;
+            this.pizzaIngredientFactory = pizzaIngredientFactory;
+
+        }
+
         public abstract string Name { get; }
-        protected abstract string Dough { get; }
-        protected abstract string Sauce { get; }
-        protected abstract IEnumerable<string> Toppings { get; }
+
+        protected abstract IEnumerable<ITopping> CreateToppings();
 
         internal void Prepare()
         {
             Console.Out.WriteLine(String.Format("Preparing {0}.", Name));
+
+            this.dough = pizzaIngredientFactory.CreateDough();
+            this.cheeses = pizzaIngredientFactory.CreateCheeses();
+            this.sauce = pizzaIngredientFactory.CreateSauce();
+            this.toppings = CreateToppings();
+
             Console.Out.WriteLine("Tossing dough...");
             Console.Out.WriteLine("Adding sauce ...");
             Console.Out.WriteLine("Adding toppings: ");
 
-            foreach(var topping in Toppings)
+            foreach(var topping in toppings)
             {
                 Console.Out.WriteLine(String.Format("   {0}", topping));
             }

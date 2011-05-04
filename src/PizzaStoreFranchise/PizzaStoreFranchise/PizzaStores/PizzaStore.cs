@@ -6,8 +6,8 @@ namespace PizzaStoreFranchise.PizzaStores
     enum PizzaType
     {
         Cheese,
-        Greek,
-        Pepperoni
+        Clam,
+        Veggie
     }
 
     abstract class PizzaStore
